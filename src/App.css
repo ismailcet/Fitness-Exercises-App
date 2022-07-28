@@ -74,6 +74,7 @@ body {
   padding-bottom: 10px;
   transform: scale(1, 1);
   transition: 0.3s all ease-in-out;
+  margin-left: 50px;
 }
 
 .exercise-card img {

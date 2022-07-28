@@ -34,6 +34,7 @@ const BodyPart = ({ item, bodyPart, setBodyPart }) => {
         fontWeight="bold"
         color="#3A1212"
         textTransform="capitalize"
+        fontFamily="Alegreya"
       >
         {item}
       </Typography>

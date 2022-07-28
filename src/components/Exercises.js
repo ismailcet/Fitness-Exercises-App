@@ -4,22 +4,10 @@ import { Box, Stack, Typography } from "@mui/material";
 
 import { exerciseOptions, fetchData } from "../utils/fetchData";
 import ExerciseCard from "./ExerciseCard";
+
 const Exercises = ({ exercises, setExercises, bodyPart, setBodyPart }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const exercisesPerPage = 9;
-
-  const indexOfLastExercise = currentPage * exercisesPerPage;
-  const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
-  const currentExercises = exercises.slice(
-    indexOfFirstExercise,
-    indexOfLastExercise
-  );
-
-  const paginate = (e, value) => {
-    setCurrentPage(value);
-
-    window.scrollTo({ top: 1800, behavior: "smooth" });
-  };
+  const [exercisesPerPage] = useState(9);
 
   useEffect(() => {
     const fetchExercisesData = async () => {
@@ -40,14 +28,34 @@ const Exercises = ({ exercises, setExercises, bodyPart, setBodyPart }) => {
     };
     fetchExercisesData();
   }, [bodyPart]);
+
+  // Pagination
+  const indexOfLastExercise = currentPage * exercisesPerPage;
+  const indexOfFirstExercise = indexOfLastExercise - exercisesPerPage;
+  const currentExercises = exercises.slice(
+    indexOfFirstExercise,
+    indexOfLastExercise
+  );
+
+  const paginate = (e, value) => {
+    setCurrentPage(value);
+
+    window.scrollTo({ top: 1800, behavior: "smooth" });
+  };
+
   return (
-    <Box id="exercises" xs={{ mt: { lg: "110px" } }} mt="50px" p="20px">
-      <Typography variant="h3" mb="46px">
+    <Box id="exercises" xs={{ mt: { lg: "109px" } }} mt="50px" p="20px">
+      <Typography
+        variant="h4"
+        fontWeight="bold"
+        sx={{ fontSize: { lg: "44px", xs: "30px" } }}
+        mb="46px"
+      >
         Showing Result
       </Typography>
       <Stack
         flexDirection="row"
-        xs={{ gap: { lg: "110px", xs: "50px" } }}
+        xs={{ gap: { lg: "107px", xs: "50px" } }}
         flexWrap="wrap"
         justifyContent="center"
       >
